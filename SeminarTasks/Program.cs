@@ -10,40 +10,40 @@ namespace SeminarTasks
     {
         static void Main(string[] args)
         {
-            //var n = int.Parse(Console.ReadLine());
+            // Способы добраться до кочки
+            Console.WriteLine("Количество способов добраться до 3 кочки:");
+            Console.WriteLine(FrogJumpsCounter.CountJumpWays(2));
+            Console.WriteLine();
 
-            //int[][] lines = new int[n][];
-
-            //for (int i = 0; i < n; i++)
-            //{
-            //    string lineDescription = Console.ReadLine();
-            //    int[] stations = lineDescription.Split(' ').Select(int.Parse).ToArray();
-            //    lines[i] = stations;
-            //}
-
-            //int[] pings = Console.ReadLine().Split(' ').Select(int.Parse).ToArray();
-
-            //var possibleStations = FindPossibleStations(n, lines, pings);
-
-            //foreach (var station in possibleStations)
-            //{
-            //    Console.WriteLine(station);
-            //}
-
-
+            // Fibonacci
             // 1 1 2 3 5 8 13 21 34 55
-            Console.WriteLine(Fibonacci.FindNthFibonacci(10)); //55
+            Console.WriteLine("Алгоритм фибоначчи:");
+            var n = 10;
+            Console.WriteLine($"{n} число фибоначчи: " + Fibonacci.FindNthFibonacci(n)); //55
+            Console.WriteLine();
+
+            //Прямоугольная область с максимальной суммой
+            Console.WriteLine("Квадратная матрица:");
+            var matrix = new[,]
+            {
+                { 0, -1, -5},
+                { 10, 12, -2},
+                { 6, 8, 0}
+            };
+            PrintMatrix(matrix);
+            Console.WriteLine("Максимальная сумма области в матрице: " + KadaneAlgorithm.FindMaximumSum(matrix));
         }
 
-        //public static IEnumerable<int> FindPossibleStations(int n, IEnumerable<IEnumerable<int>> lines, IEnumerable<int> pings)
-        //{
-        //    var intersectingStations = lines.SelectMany(line => line).Distinct(); // Все станции, включая точки пересечения
-        //    var visitedStations = new HashSet<int>(pings); // Посещенные станции (полученные пеленги)
-
-        //    var possibleStations = intersectingStations.Where(station => !visitedStations.Contains(station));
-
-        //    return possibleStations.OrderBy(station => station);
-        //}
-
+        public static void PrintMatrix(int[,] matrix)
+        {
+            for (int i = 0; i < matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < matrix.GetLength(1); j++)
+                {
+                    Console.Write(matrix[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+        }
     }
 }
